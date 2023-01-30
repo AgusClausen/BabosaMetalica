@@ -1,16 +1,17 @@
-#ifndef CHARACTER_H
-#define CHARACTER_H
+#ifndef CAJA_H
+#define CAJA_H
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 using namespace sf;
-class character {
+class caja {
 	Texture t;
 	Sprite s;
 public:
-	character();
+	caja();
 	void update();
 	void draw(RenderWindow &w);
 };
 
 #endif
+
