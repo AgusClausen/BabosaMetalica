@@ -5,12 +5,18 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 using namespace sf;
 class enemies {
-	Texture t;
-	Sprite s;
+	Texture et;
+	
 public:
+	Sprite es;
 	enemies();
 	void update();
 	void draw(RenderWindow &w);
+	Vector2f seePos(){
+		return es.getPosition();
+	}
 };
+
+
 
 #endif

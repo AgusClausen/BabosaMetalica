@@ -10,7 +10,10 @@ class Shot {
 public:
 	Shot(Vector2f pos, Vector2f dir);
 	void update();
-	void draw(RenderWindow &w);		
+	void draw(RenderWindow &w);	
+	Vector2f seePos() {
+		return m_circ.getPosition();
+	}
 private:
 	CircleShape m_circ;
 	Vector2f m_vel;
