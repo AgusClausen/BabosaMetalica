@@ -3,7 +3,7 @@
 using namespace std;
 using namespace sf;
 character::character(){
-	t.loadFromFile("file.png");
+	t.loadFromFile("personaje.png");
 	s.setTexture(t);
 	s.setPosition(640, 360);
 	s.setOrigin(35,35);

@@ -7,10 +7,11 @@ using namespace sf;
 class enemies {
 	Texture t;
 	Sprite s;
-	Vector2f pos;
+	Vector2f pos_enemie;
+	int x; int y;
 public:
-	enemies();
-	void update();
+	enemies(int x, int y);
+	void update(Vector2f pos_mapa);
 	void draw(RenderWindow &w);
 };
 #endif
