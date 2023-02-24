@@ -49,7 +49,7 @@ void enemies::update(Vector2f pos_mapa){
 	ekis = ekis/modulo;
 	ye = ye/modulo;
 	Vector2f vUnitario (2*ekis,2*ye);
-	if(modulo<500&&modulo>300){
+	if(modulo<50000&&modulo>50){
 		es.move(vUnitario);
 	}
 	

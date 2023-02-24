@@ -12,9 +12,9 @@ Shot::Shot(Vector2f pos, Vector2f dir) {
 }
  
 void Shot::update(Vector2f pos_mapa){
-	m_circ.move(m_vel);
 	float x = pos_mapa.x;
 	float y = pos_mapa.y;
+	m_circ.move(m_vel);
 	if (Keyboard::isKeyPressed(Keyboard::Key::W)){
 		if(y<1860){
 			m_circ.move(0,4);

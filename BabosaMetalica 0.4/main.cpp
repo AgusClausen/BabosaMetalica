@@ -37,32 +37,33 @@ bool piercing_value_check(Shot &d){
 	if (d.shot_must_appear()==false) return true;
 }
 	
-//Funcion para generar enemigos
-enemies generate_enemies(int x, int y, vector<enemies> ev){
-	enemies e(x,y);
-	return e;
-}
 	
 //Funcion para borrar enemigos muertos
 bool enemie_is_dead(enemies &e) {
 	if (e.is_alive()==true){return false;}
 }
 
+
+
+
+	
 int main(int argc, char *argv[]){
 	RenderWindow w(VideoMode(1280,720),"Babosa Metalica");
+	
 	
 	mapa m1;
 	
 	vector <enemies> ev;
-	
-	enemies e1 = generate_enemies(200,200,ev);
+
+	enemies e1(200,200);
 	ev.push_back(e1);
 	
-	enemies e2 = generate_enemies(400,200,ev);
+	enemies e2(400,200);
 	ev.push_back(e2);
 	
-	enemies e3 = generate_enemies(600,200,ev);
+	enemies e3(600,200);
 	ev.push_back(e3);
+	
 	
 	string s_name="pared.png";
 	//Codigo para cargar la textura de la pared y sus sprites
@@ -74,10 +75,6 @@ int main(int argc, char *argv[]){
 	right_wall.move(1270,0);
 	
 	vector <stage> objects;
-	objects.push_back (up_wall);
-	objects.push_back (left_wall);
-	objects.push_back (down_wall);
-	objects.push_back (right_wall);
 	
 	//Inicializacion de clases
 	character c1;
@@ -86,6 +83,7 @@ int main(int argc, char *argv[]){
 	menu men;
 	
 	Clock colission_clock;
+	Clock enemies_clock;
 	
 	bool iniciar=false;
 	
@@ -110,6 +108,11 @@ int main(int argc, char *argv[]){
 		
 		
 		
+		
+		
+		
+		
+		
 		m1.update(m1.coordenadas());
 		
 		c1.update(objects);
@@ -118,10 +121,14 @@ int main(int argc, char *argv[]){
 		//Generar balas
 		
 		
+		if(enemies_clock.getElapsedTime().asMilliseconds()>5000){
+			enemies e(600,200);
+			enemies_clock.restart();
+			ev.push_back(e);
+		}
 		
 		if(c1.mustshoot()) vd.push_back(c1.shotgen(m1.coordenadas()));
 		
-		//ev.push_back(
 		
 		for(Shot &d : vd) d.update(m1.coordenadas());
 		
@@ -133,7 +140,7 @@ int main(int argc, char *argv[]){
 		auto it2 = remove_if(vd.begin(),vd.end(),piercing_value_check);
 		vd.erase(it2,vd.end());
 		
-		//Borrar enemigos que mueren FALTA HACER QUE DEJEN DE RECIBIR BALAS CUANDO MUEREN
+		//Borrar enemigos que mueren 
 		auto it3 = remove_if(ev.begin(),ev.end(),enemie_is_dead);
 		ev.erase(it3,ev.end());
 		
@@ -146,6 +153,8 @@ int main(int argc, char *argv[]){
 				}
 			}
 		}
+
+		
 		//Dibujado de varias cosas
 		w.clear(Color(220, 220,180,255));
 		
@@ -155,10 +164,6 @@ int main(int argc, char *argv[]){
 		
 		
 		
-		up_wall.draw(w);
-		left_wall.draw(w);
-		down_wall.draw(w);
-		right_wall.draw(w);
 		
 		for(Shot &d : vd){
 			d.draw(w);
