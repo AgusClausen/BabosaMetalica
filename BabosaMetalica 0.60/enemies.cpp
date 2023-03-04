@@ -8,11 +8,10 @@ using namespace std;
 using namespace sf;
 	
 	
-enemies::enemies(int x,int y, int type) {
+enemies::enemies(int x,int y, int type, Texture *et) {
 	if (type==1){
-	et.loadFromFile("zombie.png");
 	}
-	es.setTexture(et);
+	es.setTexture(*et);
 	es.setOrigin(35,35);
 	es.setPosition(x,y);
 }

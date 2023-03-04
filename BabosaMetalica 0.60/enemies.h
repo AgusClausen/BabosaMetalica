@@ -7,7 +7,6 @@
 using namespace std;
 using namespace sf;
 class enemies {
-	Texture et;
 	float hp=100;
 	bool alive=true;
 	Clock e_clock;
@@ -18,7 +17,7 @@ class enemies {
 	
 	public:
 	
-	enemies(int x,int y,int type);
+	enemies(int x,int y,int type, Texture *et);
 	void update(Vector2f pos_mapa);
 	void get_damage(float);
 	void draw(RenderWindow &w);

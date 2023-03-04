@@ -12,11 +12,12 @@
 using namespace std;
 class sprites {
 	 Texture tenemy1, tshotgun, tg1, tg5;
-	 Sprite senemy1, sshotgun, sg1, sg5;
+	 Sprite sshotgun, sg1, sg5;
 	 
 	 
 	public:
-	sprites();
+	sprites();\
+	Texture get_enemy_texture ();
 };
 
 #endif
